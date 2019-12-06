@@ -5,9 +5,14 @@
 #include <iostream>
 #include <unistd.h>
 
-using std::cerr;
-using std::cout;
-using std::endl;
+
+namespace
+{
+  using std::cerr;
+  using std::cout;
+  using std::endl;
+}
+
 
 // -------------------------------------------------------------------------- //
 // Helper functions
@@ -143,45 +148,62 @@ double Rational::printd(bool output) // Print function that uses a bool
 		if (output == true)
 			cout << "1\n" << endl;
 		return 1;
-	} else if (numerator == 0) // If numerator = 0, the number is always 0.
+	}
+	else if (numerator == 0) // If numerator = 0, the number is always 0.
 	{
 		if (output == true)
 			cout << "0\n";
 		return 0;
-	} else if (denominator == 1) // If denominator = 1, the number is always
-								 // just the numerator.
+	}
+	else if (denominator == 1) // If denominator = 1, the number is always just the numerator.
 	{
 		if (output == true)
 			cout << numerator << endl;
 		return numerator;
-	} else if (gcd(numerator, denominator) == 1) {
+	}
+	else if (gcd(numerator, denominator) == 1)
+    {
 		if (output == true)
+		{
 			cout << numerator / static_cast<double>(denominator)
 				 << endl; // Converts the fraction to a double decimal.
+		}
 		return numerator / static_cast<double>(denominator);
-	} else
+	}
+	else
 	  {
 		  if (output == true)
+          {
 			  cout << numerator << " / " << denominator << endl;
+          }
 		  return numerator / static_cast<double>(denominator);
 	  }
 }
 
 double Rational::printd() // Overloading the printd function
 {
-	if (numerator == denominator) {
+	if (numerator == denominator)
+    {
 		cout << "1\n" << endl;
 		return 1;
-	} else if (numerator == 0) {
+	}
+	else if (numerator == 0)
+	{
 		cout << "0\n";
 		return 0;
-	} else if (denominator == 1) {
+	}
+	else if (denominator == 1)
+    {
 		cout << numerator << endl;
 		return numerator;
-	} else if (gcd(numerator, denominator) == 1) {
+	}
+	else if (gcd(numerator, denominator) == 1)
+    {
 		cout << numerator / static_cast<double>(denominator) << endl;
 		return numerator / static_cast<double>(denominator);
-	} else {
+	}
+	else
+    {
 		cout << numerator << " / " << denominator << endl;
 		return numerator / static_cast<double>(denominator);
 	}
@@ -202,83 +224,90 @@ void Rational::operator=(int I) // assignment operator overloading
 bool Rational::
 operator==(Rational R) // equal to comparison operator overloading
 {
-	if (this->printd(false) == R.printd(false)) {
+	if (this->printd(false) == R.printd(false))
+    {
 		return true;
-	} else {
+	}
+	else
+    {
 		return false;
 	}
 }
 
 bool Rational::operator!=(Rational &R) // not equal to comparison operator overloading
 {
-	if (this->printd(false) != R.printd(false)) {
+	if (this->printd(false) != R.printd(false))
+    {
 		return true;
-	} else {
+	}
+	else
+	{
 		return false;
 	}
 }
 
 bool Rational::operator<(Rational R) // less than comparison operator overloading
 {
-	if (this->printd(false) < R.printd(false)) {
+	if (this->printd(false) < R.printd(false))
+    {
 		return true;
-	} else {
+	}
+	else
+	{
 		return false;
 	}
 }
 
-bool operator==(int x, Rational R) {
+bool operator==(int x, Rational R) // comparison operator handling integer and rational object
+{
 	int intR = R.numerator / R.denominator;
 	return (x == intR);
 }
 
-bool Rational::operator==(int x) {
-	int intR = this->numerator / this->denominator;
-	return (intR == x);
-}
-
-bool Rational::operator<(int x) {
-	int intR = this->numerator / this->denominator;
-	return (intR < x);
-}
-
-bool operator<(int x, Rational R) {
+bool operator<(int x, Rational R) //Less than operator handling integer and rational object
+{
 	int intR = R.numerator / R.denominator;
 	return (x < intR);
 }
 
-bool Rational::operator<=(
-	Rational &R) // less than or equal to     comparison operator overloading
+bool Rational::operator<=(Rational &R) // less than or equal to comparison operator
 {
-	if (this->printd(false) <= R.printd(false)) {
+	if (this->printd(false) <= R.printd(false))
+    {
 		return true;
-	} else {
+	}
+	else
+	{
 		return false;
 	}
 }
 
 bool Rational::operator>(Rational &R) // greater than comparison operator overloading
 {
-	if (this->printd(false) > R.printd(false)) {
+	if (this->printd(false) > R.printd(false))
+    {
 		return true;
-	} else {
+	} else
+	{
 		return false;
 	}
 }
 
 bool Rational::operator>=(Rational &R) // greater than or equal to comparison operator overloading
 {
-	if (this->printd(false) >= R.printd(false)) {
+	if (this->printd(false) >= R.printd(false))
+    {
 		return true;
-	} else {
+	}
+	else
+	{
 		return false;
 	}
 }
 
 Rational Rational::operator+(const Rational &R) // addition with 2 rationals
 {
-	int newNum =
-		(this->numerator * R.denominator + this->denominator * R.numerator);
+	int newNum = (this->numerator * R.denominator + this->denominator * R.numerator);
 	int newDen = (this->denominator * R.denominator);
 	Rational Sum(newNum, newDen);
 	return Sum;
@@ -286,8 +315,7 @@ Rational Rational::operator+(const Rational &R) // addition with 2 rationals
 Rational Rational::operator+(int I) // addition with rational and an integer
 {
 	Rational R(I, 1);
-	int newNum =
-		(this->numerator * R.denominator + this->denominator * R.numerator);
+	int newNum = (this->numerator * R.denominator + this->denominator * R.numerator);
 	int newDen = (this->denominator * R.denominator);
 	Rational Sum(newNum, newDen);
 	return Sum;
@@ -295,7 +323,7 @@ Rational Rational::operator+(int I) // addition with rational and an integer
 
 Rational Rational::operator-(const Rational &R) // subtraction with 2 rationals
 {
-	int newNum =(this->numerator * R.denominator - this->denominator * R.numerator);
+	int newNum = (this->numerator * R.denominator - this->denominator * R.numerator);
 	int newDen = (this->denominator * R.denominator);
 	Rational Dif(newNum, newDen);
 	return Dif;
@@ -304,14 +332,13 @@ Rational Rational::operator-(const Rational &R) // subtraction with 2 rationals
 Rational Rational::operator-(int I) // subtraction with rational and an integer
 {
 	Rational R(I, 1);
-	int newNum =(this->numerator * R.denominator - this->denominator * R.numerator);
+	int newNum = (this->numerator * R.denominator - this->denominator * R.numerator);
 	int newDen = (this->denominator * R.denominator);
 	Rational Dif(newNum, newDen);
 	return Dif;
 }
 
-Rational Rational::
-operator*(const Rational &R) // multiplication with 2 rationals
+Rational Rational::operator*(const Rational &R) // multiplication with 2 rationals
 {
 	int newNum = (this->numerator * R.numerator);
 	int newDen = (this->denominator * R.denominator);
@@ -319,8 +346,7 @@ operator*(const Rational &R) // multiplication with 2 rationals
 	return Prod;
 }
 
-Rational Rational::
-operator*(int I) // multiplication with 2 rationals and an integer
+Rational Rational::operator*(int I) // multiplication with 2 rationals and an integer
 {
 	Rational R(I, 1);
 	int newNum = (this->numerator * R.numerator);

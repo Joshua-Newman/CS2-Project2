@@ -30,14 +30,12 @@ public:
 	int num() const { return numerator; }// Returns the numerator.
 	int den() const { return denominator; }// Returns the denominator
 	void print(); // prints the fraction in num/denom form.
-	double printd(bool); // prints the fraction as a decimal and                             //returns that value. Bool parameter is for                         //weather or not to cout the result.
-	double printd(); // overloaded printd to assume that the result                      //should be printed to cout.
+	double printd(bool); // prints the fraction as a decimal and returns that value. Bool parameter is for weather or not to cout the result.
+	double printd(); // overloaded printd to assume that the result should be printed to cout.
 
 	void operator=(const Rational);
 	void operator=(int);
 	bool operator==(Rational);
-    bool operator==(int);
-    bool operator<(int);
 	bool operator!=(Rational&);
 	bool operator<(Rational);
 	bool operator<=(Rational&);
