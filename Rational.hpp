@@ -36,16 +36,16 @@ public:
 	void operator=(const Rational);
 	void operator=(int);
 	bool operator==(Rational);
-    bool operator==(int , Rational );
-    bool operator<(int , Rational );
+    bool operator==(int);
+    bool operator<(int);
 	bool operator!=(Rational&);
 	bool operator<(Rational);
 	bool operator<=(Rational&);
 	bool operator>(Rational&);
 	bool operator>=(Rational&);
 
-  //friend bool operator==(int , Rational);
-  //friend bool operator<(int, Rational);
+    friend bool operator==(int , Rational);
+    friend bool operator<(int, Rational);
 
 	Rational operator+(const Rational&);
 	Rational operator+(int);

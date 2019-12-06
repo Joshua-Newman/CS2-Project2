@@ -128,10 +128,10 @@ public:
 void interoperate()
   {
     Rational r1 = 1;
-    std::cout  << (r1 == 1); // prints true
-    //std::cout  << (2 == r1); // prints false
-    std::cout  << (r1 < 2); // prints true
-    //std::cout  << (0 < r1); // prints true
+    std::cout  << (r1 == 1) << std::endl; // prints true
+    std::cout  << (2 == r1 )<< std::endl; // prints false
+    std::cout  << (r1 < 2) << std::endl; // prints true
+    std::cout  << (0 < r1) << std::endl; // prints true
     std::cout  << (r1 + 2) << std::endl; // prints 3/1 (or just 3)
   }
 
@@ -167,6 +167,22 @@ void rc()
       {
         std::cout << std::boolalpha << (r1 == r2) << '\n';
       }
+			else if (op == "!=")
+      {
+        std::cout << std::boolalpha << (r1 != r2) << '\n';
+      }
+			else if (op == ">")
+      {
+        std::cout << std::boolalpha << (r1 > r2) << '\n';
+      }
+			else if (op == "<=")
+      {
+        std::cout << std::boolalpha << (r1 <= r2) << '\n';
+      }
+			else if (op == ">=")
+      {
+        std::cout << std::boolalpha << (r1 >= r2) << '\n';
+      }
       else if (op == "<")
       {
         std::cout << std::boolalpha << (r1 < r2) << '\n';
@@ -174,6 +190,18 @@ void rc()
       else if (op == "+")
       {
         std::cout << (r1 + r2) << '\n';
+      }
+			else if (op == "*")
+      {
+        std::cout << (r1 * r2) << '\n';
+      }
+			else if (op == "/")
+      {
+        std::cout << (r1 / r2) << '\n';
+      }
+			else if (op == "-")
+      {
+        std::cout << (r1 - r2) << '\n';
       }
       else
       {
