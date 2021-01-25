@@ -1,6 +1,6 @@
 # CS2-Project2
 
-Rational Project C++
+Computer Science 2 : Rational Project C++
 
 Professor Will Crissey
 
